@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Loewenstark_Configurablechanger>
+            <version>0.0.1</version>
+        </Loewenstark_Configurablechanger>
+    </modules>
+    <frontend>
+        <routers>
+            <loewenstark_configurablechanger>
+                <use>standard</use>
+                <args>
+                    <module>Loewenstark_Configurablechanger</module>
+                    <frontName>configurablechanger</frontName>
+                </args>
+            </loewenstark_configurablechanger>
+        </routers>   
+        <layout>
+            <updates>
+                <loewenstark_configurablechanger>
+                    <file>configurablechanger.xml</file>
+                </loewenstark_configurablechanger>
+            </updates>
+        </layout>
+    </frontend>
+</config>
