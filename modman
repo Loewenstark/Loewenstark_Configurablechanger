@@ -1,3 +1,4 @@
 js/loewenstark/configurable_changer.js                                  js/loewenstark/configurable_changer.js
-app/code/local/Loewenstark/Configurablechanger                          app/code/local/Loewenstark/Configurablechanger
-app/design/frontend/base/default/layout/configurablechanger.xml      app/design/frontend/base/default/layout/configurablechanger.xml
+app/code/community/Loewenstark/Configurablechanger                      app/code/community/Loewenstark/Configurablechanger
+app/etc/modules/Loewenstark_Configurablechanger.xml                     app/etc/modules/Loewenstark_Configurablechanger.xml  
+app/design/frontend/base/default/layout/configurablechanger.xml         app/design/frontend/base/default/layout/configurablechanger.xml
