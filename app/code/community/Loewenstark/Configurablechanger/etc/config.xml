@@ -5,6 +5,13 @@
             <version>0.0.1</version>
         </Loewenstark_Configurablechanger>
     </modules>
+    <global>
+        <blocks>
+            <configurablechanger>
+                <class>Loewenstark_Configurablechanger_Block</class>
+            </configurablechanger>
+        </blocks>
+    </global>
     <frontend>
         <routers>
             <loewenstark_configurablechanger>

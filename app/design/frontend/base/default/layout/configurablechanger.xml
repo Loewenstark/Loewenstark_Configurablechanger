@@ -5,4 +5,12 @@
             <action method="addJs" ifconfig="configurable_changer/properties/active"><script>loewenstark/configurable_changer.js</script></action>
         </reference>
     </catalog_product_view>
+    <loewenstark_configurablechanger_index_index>
+        <block type="configurablechanger/text_list" name="root" output="toHtml">
+            <action method="addProductAttribute"><attribute>sku</attribute><alias><![CDATA[.sku]]></alias></action>
+            <action method="addProductAttribute"><attribute>name</attribute><alias><![CDATA[.product-name h1]]></alias></action>
+            <action method="addProductAttribute"><attribute>short_description</attribute><alias><![CDATA[.short-description .std]]></alias></action>
+            <action method="addProductAttribute"><attribute>description</attribute><alias><![CDATA[.box-description .std]]></alias></action>
+        </block>
+    </loewenstark_configurablechanger_index_index>
 </layout> 
