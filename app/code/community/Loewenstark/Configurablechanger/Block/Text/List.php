@@ -18,14 +18,17 @@ extends Mage_Core_Block_Abstract
      */
     protected function _toHtml()
     {
-        $result = array();
+        $result = array(
+            'product_id' => $this->getProduct()->getId(),
+            'items' => array()
+        );
         foreach ($this->getSortedChildren() as $name) {
             $block = $this->getLayout()->getBlock($name);
             /* @var $block Mage_Core_Block_Abstract */
             if (!$block) {
                 Mage::throwException(Mage::helper('core')->__('Invalid block: %s', $name));
             }
-            $result[] = array(
+            $result['items'][] = array(
                 'class'   => $block->getBlockAlias(),
                 'content' => $block->toHtml()
             );

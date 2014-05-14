@@ -11,6 +11,7 @@
             <action method="addProductAttribute"><attribute>name</attribute><alias><![CDATA[.product-name h1]]></alias></action>
             <action method="addProductAttribute"><attribute>short_description</attribute><alias><![CDATA[.short-description .std]]></alias></action>
             <action method="addProductAttribute"><attribute>description</attribute><alias><![CDATA[.box-description .std]]></alias></action>
+            <block type="catalog/product_view_media" name="configurablechanger.media" as=".product-img-box" template="catalog/product/view/media.phtml"/>
         </block>
     </loewenstark_configurablechanger_index_index>
-</layout> 
+</layout>

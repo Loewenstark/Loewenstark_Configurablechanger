@@ -1,4 +1,4 @@
-
+function confChangeOnSuccess(){}
 document.observe("dom:loaded", function() {
     var configurableCache = [];
     spConfig.getIdOfSelectedProduct = function() {
@@ -44,24 +44,27 @@ document.observe("dom:loaded", function() {
                 return false;
             }
             if (id) {
+                console.log(id);
                 new Ajax.Request('configurablechanger/index/index/productid/' + id,
                         {
                             method: 'get',
                             onSuccess: function(response) {
-                                var product = response.responseText.evalJSON().evalJSON();
+                                var product = response.responseText.evalJSON();
+                                var product_id = product.product_id;
+                                var currentAction = $('product_addtocart_form').readAttribute('action');
+                                var newcurrentAction = currentAction.replace(/product\/\d+\//, 'product/' + product_id + '/');
+                                $('product_addtocart_form').writeAttribute('src', newcurrentAction);
+                                product.items.forEach(function(e) {
+                                    $$(e.class)[0].innerHTML = e.content;
+                                });
                                 configurableCache[id] = product;
                                 setProductData(product);
+                                confChangeOnSuccess();
                             }
                         });
-
                 return false;
             } else
                 return false;
         }, false);
     });
-    function setProductData(product) {       
-        $$('div.product-name h1')[0].innerHTML=product.name;
-        $$('div.short-description div.std')[0].innerHTML = product.short_description;
-        $$('p.product-image img')[0].writeAttribute('src',product.image);
-    }
 });
