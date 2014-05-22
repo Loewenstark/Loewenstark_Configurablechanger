@@ -50,13 +50,6 @@ document.observe("dom:loaded", function() {
                             method: 'get',
                             onSuccess: function(response) {
                                 var product = response.responseText.evalJSON();
-                                var product_id = product.product_id;
-                                var currentAction = $('product_addtocart_form').readAttribute('action');
-                                var newcurrentAction = currentAction.replace(/product\/\d+\//, 'product/' + product_id + '/');
-                                $('product_addtocart_form').writeAttribute('src', newcurrentAction);
-                                product.items.forEach(function(e) {
-                                    $$(e.class)[0].innerHTML = e.content;
-                                });
                                 configurableCache[id] = product;
                                 setProductData(product);
                                 confChangeOnSuccess();
@@ -68,3 +61,14 @@ document.observe("dom:loaded", function() {
         }, false);
     });
 });
+
+function setProductData(product)
+{
+    var product_id = product.product_id;
+    var currentAction = $('product_addtocart_form').readAttribute('action');
+    var newcurrentAction = currentAction.replace(/product\/\d+\//, 'product/' + product_id + '/');
+    $('product_addtocart_form').writeAttribute('src', newcurrentAction);
+    product.items.forEach(function(e) {
+        $$(e.class)[0].innerHTML = e.content;
+    });
+}
