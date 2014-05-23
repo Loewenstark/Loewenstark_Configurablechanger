@@ -5,7 +5,10 @@ extends Mage_Core_Block_Abstract
 {
     
     protected $_attr_code = null;
-
+    protected function _construct() {
+        parent::_construct();
+        $this->addData(array('cache_lifetime' => null)); // 12 hours
+    }
 
     /**
      * get Product Model

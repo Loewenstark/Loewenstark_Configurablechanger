@@ -3,13 +3,30 @@
 class Loewenstark_Configurablechanger_Block_Text_List
 extends Mage_Core_Block_Abstract
 {
-    protected function _construct() {
+    protected function _construct()
+    {
         parent::_construct();
         $this->addData(array('cache_lifetime' => 43200)); // 12 hours
         $this->addCacheTag(array(
             Mage_Catalog_Model_Product::CACHE_TAG,
-            Mage_Catalog_Model_Product::CACHE_TAG . '_' . Mage::registry('productid'),
+            Mage_Catalog_Model_Product::CACHE_TAG . '_' . Mage::registry('product_id'),
         ));
+    }
+    
+    /**
+     * Get cache key informative items
+     *
+     * @return array
+     */
+    public function getCacheKeyInfo()
+    {
+        return array(
+            Mage_Catalog_Model_Product::CACHE_TAG . '_' . Mage::registry('product_id'),
+            $this->getNameInLayout(),
+            Mage::app()->getStore()->getId(),
+            Mage::getDesign()->getPackageName(),
+            Mage::getDesign()->getTheme('template'),
+        );
     }
 
     /**
