@@ -69,6 +69,9 @@ function setProductData(product)
     var newcurrentAction = currentAction.replace(/product\/\d+\//, 'product/' + product_id + '/');
     $('product_addtocart_form').writeAttribute('src', newcurrentAction);
     product.items.forEach(function(e) {
-        $$(e.class)[0].innerHTML = e.content;
+        if(e.content != '' && e.content != '&nbsp;')
+        {
+            $$(e.class)[0].innerHTML = e.content;
+        }
     });
 }
