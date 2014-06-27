@@ -67,7 +67,7 @@ function setProductData(product)
     var product_id = product.product_id;
     var currentAction = $('product_addtocart_form').readAttribute('action');
     var newcurrentAction = currentAction.replace(/product\/\d+\//, 'product/' + product_id + '/');
-    $('product_addtocart_form').writeAttribute('src', newcurrentAction);
+    $('product_addtocart_form').writeAttribute('action', newcurrentAction);
     product.items.forEach(function(e) {
         if(e.content != '' && e.content != '&nbsp;')
         {
