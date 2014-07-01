@@ -9,10 +9,10 @@ extends Mage_Core_Block_Abstract
         $this->addData(array('cache_lifetime' => 43200)); // 12 hours
         $this->addCacheTag(array(
             Mage_Catalog_Model_Product::CACHE_TAG,
-            Mage_Catalog_Model_Product::CACHE_TAG . '_' . Mage::registry('product_id'),
+            Mage_Catalog_Model_Product::CACHE_TAG . '_' . $this->getProductId(),
         ));
     }
-    
+
     /**
      * Get cache key informative items
      *
@@ -21,7 +21,7 @@ extends Mage_Core_Block_Abstract
     public function getCacheKeyInfo()
     {
         return array(
-            Mage_Catalog_Model_Product::CACHE_TAG . '_' . Mage::registry('product_id'),
+            Mage_Catalog_Model_Product::CACHE_TAG . '_' . $this->getProductId(),
             $this->getNameInLayout(),
             Mage::app()->getStore()->getId(),
             Mage::getDesign()->getPackageName(),
@@ -86,8 +86,18 @@ extends Mage_Core_Block_Abstract
         {
             return $product;
         }
-        $product = Mage::getModel('catalog/product')->load(Mage::registry('product_id'));
+        $product = Mage::getModel('catalog/product')->load($this->getProductId());
         Mage::register('product', $product);
         return $product;
+    }
+    
+    /**
+     * get Product Id
+     * 
+     * @return int
+     */
+    public function getProductId()
+    {
+        return Mage::registry('product_id');
     }
 }
