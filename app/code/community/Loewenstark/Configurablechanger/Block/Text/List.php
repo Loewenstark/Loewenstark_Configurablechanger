@@ -45,6 +45,7 @@ extends Mage_Core_Block_Abstract
             if (!$block) {
                 Mage::throwException(Mage::helper('core')->__('Invalid block: %s', $name));
             }
+            $block->setProduct($this->getProduct());
             $result['items'][] = array(
                 'class'   => $block->getBlockAlias(),
                 'content' => $block->toHtml()
