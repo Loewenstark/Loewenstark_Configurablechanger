@@ -11,6 +11,11 @@
                 <class>Loewenstark_Configurablechanger_Block</class>
             </configurablechanger>
         </blocks>
+        <models>
+            <configurablechanger>
+                <class>Loewenstark_Configurablechanger_Model</class>
+            </configurablechanger>
+        </models>
     </global>
     <frontend>
         <routers>
@@ -30,4 +35,16 @@
             </updates>
         </layout>
     </frontend>
+    <global>
+        <events>
+            <controller_action_predispatch_checkout_cart_add>
+                <observers>
+                    <configurablechanger>
+                        <class>configurablechanger/observer</class>
+                        <method>addToCartPreDispatch</method>
+                    </configurablechanger>
+                </observers>
+            </controller_action_predispatch_checkout_cart_add>
+        </events>
+    </global>
 </config>
