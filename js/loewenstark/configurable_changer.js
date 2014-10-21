@@ -45,7 +45,9 @@ document.observe("dom:loaded", function() {
             }
             if (id) {
                 console.log(id);
-                new Ajax.Request('configurablechanger/index/index/productid/' + id,
+                var port = (document.location.port == '') ? '': ':'+document.location.port;
+                var url = document.location.protocol+'//'+document.location.hostname+port+'/configurablechanger/index/index/productid/'
+                new Ajax.Request(url + id,
                         {
                             method: 'get',
                             onSuccess: function(response) {
