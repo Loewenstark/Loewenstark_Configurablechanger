@@ -45,8 +45,14 @@ document.observe("dom:loaded", function() {
             }
             if (id) {
                 console.log(id);
-                var port = (document.location.port == '') ? '': ':'+document.location.port;
-                var url = document.location.protocol+'//'+document.location.hostname+port+'/configurablechanger/index/index/productid/'
+                var path = '/configurablechanger/index/index/productid/';
+                var url = '';
+                if (typeof(BASE_URL) == 'undefined') {
+                    var port = (document.location.port == '') ? '': ':'+document.location.port;
+                    url = document.location.protocol+'//'+document.location.hostname+port+path;
+                } else {
+                    url = BASE_URL+path;
+                }
                 new Ajax.Request(url + id,
                         {
                             method: 'get',
