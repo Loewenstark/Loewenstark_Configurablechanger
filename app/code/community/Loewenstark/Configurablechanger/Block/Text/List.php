@@ -101,4 +101,26 @@ extends Mage_Core_Block_Abstract
     {
         return Mage::registry('product_id');
     }
+    
+    /**
+     * Add tag to block
+     *
+     * @param string|array $tag
+     * @return Mage_Core_Block_Abstract
+     */
+    public function addCacheTag($tag)
+    {
+        if (method_exists('Mage_Core_Block_Abstract', 'addCacheTag'))
+        {
+            return parrent::addCacheTag($tag);
+        }
+        if (!is_array($tag))
+        {
+            $tag = array($tag);
+        }
+        $this->addData(array(
+            'cache_tags'    => $tag
+        ));
+        return $this;
+    }
 }
