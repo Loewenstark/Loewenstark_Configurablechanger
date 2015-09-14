@@ -89,6 +89,7 @@ extends Mage_Core_Block_Abstract
         }
         $product = Mage::getModel('catalog/product')->load($this->getProductId());
         Mage::register('product', $product);
+        Mage::register('current_product', $product);
         return $product;
     }
     
