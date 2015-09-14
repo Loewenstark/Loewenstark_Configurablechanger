@@ -112,7 +112,7 @@ extends Mage_Core_Block_Abstract
     {
         if (method_exists('Mage_Core_Block_Abstract', 'addCacheTag'))
         {
-            return parrent::addCacheTag($tag);
+            return parent::addCacheTag($tag);
         }
         if (!is_array($tag))
         {
