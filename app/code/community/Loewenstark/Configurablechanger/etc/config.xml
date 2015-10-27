@@ -6,6 +6,11 @@
         </Loewenstark_Configurablechanger>
     </modules>
     <global>
+        <helpers>
+            <configurablechanger>
+                <class>Loewenstark_Configurablechanger_Helper</class>
+            </configurablechanger>
+        </helpers>
         <blocks>
             <configurablechanger>
                 <class>Loewenstark_Configurablechanger_Block</class>
