@@ -44,7 +44,6 @@ document.observe("dom:loaded", function() {
                 return false;
             }
             if (id) {
-                console.log(id);
                 var path = '/configurablechanger/index/index/productid/';
                 var url = '';
                 if (typeof(BASE_URL) == 'undefined') {
@@ -79,7 +78,12 @@ function setProductData(product)
     product.items.forEach(function(e) {
         if(e.content != '' && e.content != '&nbsp;')
         {
-            $$(e.class)[0].innerHTML = e.content;
+            var element = $$(e.class)[0];
+            if(typeof element != 'undefined') {
+                element.innerHTML = e.content;
+            }else{
+                console.log('[Loewenstark_Configurablechanger] Can\'t finde element with class: '+e.class);
+            }
         }
     });
 }
