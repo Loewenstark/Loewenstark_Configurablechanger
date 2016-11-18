@@ -1,6 +1,9 @@
 function confChangeOnSuccess(){}
 document.observe("dom:loaded", function() {
     var configurableCache = [];
+    
+    if(typeof spConfig == 'undefined') return false;
+    
     spConfig.getIdOfSelectedProduct = function() {
         var existingProducts = new Object();
         for (var i = this.settings.length - 1; i >= 0; i--) {
