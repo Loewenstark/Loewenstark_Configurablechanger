@@ -44,6 +44,7 @@ document.observe("dom:loaded", function() {
             }
             if (typeof (configurableCache[id]) != 'undefined') {
                 setProductData(configurableCache[id]);
+                confChangeOnSuccess();
                 return false;
             }
             if (id) {
