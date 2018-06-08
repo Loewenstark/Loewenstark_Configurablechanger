@@ -36,9 +36,8 @@ document.observe("dom:loaded", function() {
             return currentSimpleProductId;
         }
     }
-    $$('select.super-attribute-select').each(function(item, index) {
-        item.addEventListener('change', function() {
-            var id = spConfig.getIdOfSelectedProduct();
+    spConfig.loadConfData = function() {
+        var id = spConfig.getIdOfSelectedProduct();
             if(typeof(id)=='undefined'){
                 id = spConfig.config.productId;
             }
@@ -67,10 +66,21 @@ document.observe("dom:loaded", function() {
                             }
                         });
                 return false;
-            } else
+            } else {
                 return false;
+            }
+    }
+    $$('select.super-attribute-select').each(function(item, index) {
+        item.addEventListener('change', function() {
+            return spConfig.loadConfData();
         }, false);
     });
+    
+    // If defaults are overwritten by url (e.g. product.html#123=45&45=66) load current data
+    var separatorIndex = window.location.href.indexOf('#');
+    if (separatorIndex != -1) {
+        spConfig.loadConfData();
+    }
 });
 
 function setProductData(product)
