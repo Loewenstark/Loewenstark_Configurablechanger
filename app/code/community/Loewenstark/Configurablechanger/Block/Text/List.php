@@ -63,13 +63,13 @@ extends Mage_Core_Block_Abstract
      * 
      * @return Loewenstark_Configurablechanger_Block_Text_List
      */
-    public function addProductAttribute($attribute, $alias, $name=null)
+    public function addProductAttribute($attribute, $alias, $name=null, $output_helper=true)
     {
         if(is_null($name))
         {
             $name = 'configurablechanger_'.$attribute;
         }
-        $block = $this->getLayout()->createBlock('configurablechanger/attribute', $name)->setProductAttribute($attribute);
+        $block = $this->getLayout()->createBlock('configurablechanger/attribute', $name)->setDisableOutputHelper($output_helper ? false : true)->setProductAttribute($attribute);
         $this->append($block, $alias);
         return $this;
     }

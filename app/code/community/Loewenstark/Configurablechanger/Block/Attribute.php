@@ -45,6 +45,12 @@ extends Mage_Core_Block_Abstract
     public function getProductAttribute()
     {
         $_product = $this->getProduct();
+        
+        if($this->getDisableOutputHelper())
+        {
+            return $_product->getResource()->getAttribute($this->_attr_code)->getFrontend()->getValue($_product);
+        }
+        
         return Mage::helper('catalog/output')->productAttribute($_product, $_product->getResource()->getAttribute($this->_attr_code)->getFrontend()->getValue($_product), $this->_attr_code);
     }
     
