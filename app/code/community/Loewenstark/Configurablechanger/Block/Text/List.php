@@ -26,6 +26,7 @@ extends Mage_Core_Block_Abstract
             Mage::app()->getStore()->getId(),
             Mage::getDesign()->getPackageName(),
             Mage::getDesign()->getTheme('template'),
+            Mage::helper('configurablechanger')->canUseWebp(),
         );
     }
 
